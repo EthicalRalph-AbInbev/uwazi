@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { FindProductDto } from './dto/get-product.dto';
+import { FindProductDto } from './dto/find-product.dto';
 import { ProductService } from './product.service';
 
 @Controller('product')

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ErrorHelper } from 'src/utils/error.utils';
-import { FindProductDto } from './dto/get-product.dto';
+import { FindProductDto } from './dto/find-product.dto';
 import { dummyProduct } from './product.dummy';
 
 @Injectable()
