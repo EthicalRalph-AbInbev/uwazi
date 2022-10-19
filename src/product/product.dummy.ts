@@ -1,4 +1,6 @@
-export const dummyProduct = {
+import { Product } from 'src/interface';
+
+export const dummyProduct: Product = {
   serializedGlobalTradeItemNumber: '(01)02024220714002(21)056339576999',
   signature: 'Ci3JHf...qh0Nxrsn3EK==',
   producer: '182ee7b8f685138616949',
