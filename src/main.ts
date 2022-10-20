@@ -11,6 +11,8 @@ const logger = new Logger('UWAZI');
 const bootstrap = async () => {
   const app = await NestFactory.create<INestApplication>(AppModule);
 
+  app.setGlobalPrefix('/api');
+
   const config = new DocumentBuilder()
     .setTitle('UWAZI Orchestrator API')
     .setDescription('The UWAZI Orchestrator API description')
@@ -21,7 +23,6 @@ const bootstrap = async () => {
   SwaggerModule.setup('/api/docs', app, document);
 
   app.enableCors();
-  app.setGlobalPrefix('/api');
 
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
