@@ -8,38 +8,28 @@ import { AppModule } from './app.module';
 
 const logger = new Logger('UWAZI');
 
-class Entrypoint {
-  public async start(): Promise<void> {
-    const app = await NestFactory.create(AppModule);
+const bootstrap = async () => {
+  const app = await NestFactory.create<INestApplication>(AppModule);
 
-    this.setupSwagger(app);
+  const config = new DocumentBuilder()
+    .setTitle('UWAZI Orchestrator API')
+    .setDescription('The UWAZI Orchestrator API description')
+    .setVersion('0.1')
+    .build();
 
-    app.enableCors();
-    app.setGlobalPrefix('/api');
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('/api/docs', app, document);
 
-    app.useGlobalPipes(new ValidationPipe());
-    app.useGlobalFilters(new HttpExceptionFilter());
+  app.enableCors();
+  app.setGlobalPrefix('/api');
 
-    const port = app.get(ConfigService).get('PORT');
+  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new HttpExceptionFilter());
 
-    await app.listen(port);
-    logger.log(`Application is running on: ${await app.getUrl()}`);
-  }
+  const port = app.get(ConfigService).get('PORT');
 
-  private setupSwagger(app: INestApplication): void {
-    const config = new DocumentBuilder()
-      .setTitle('UWAZI Orchestrator API')
-      .setDescription('The UWAZI Orchestrator API description')
-      .setVersion('0.1')
-      .build();
+  await app.listen(port);
+  logger.log(`Application is running on: ${await app.getUrl()}`);
+};
 
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('swagger', app, document);
-  }
-}
-
-new Entrypoint().start().catch((error) => {
-  logger.error(error, null, 'Bootstrap');
-
-  process.exit();
-});
+bootstrap();
