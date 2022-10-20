@@ -6,6 +6,12 @@
 $ npm install
 ```
 
+## Docs
+
+###### Swagger docs path
+
+[/api/docs](https://uwazi-orchestrator.herokuapp.com/api/docs)
+
 ## Running the app
 
 ```bash
