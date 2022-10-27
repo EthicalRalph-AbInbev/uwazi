@@ -2,16 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { Product } from 'src/interface';
 import { ErrorHelper } from 'src/utils/error.utils';
 import { FindProductDto } from './dto/find-product.dto';
-import { dummyProduct } from './product.dummy';
+import { dummyProducts } from './product.dummy';
 
 @Injectable()
 export class ProductService {
   async findProduct(payload: FindProductDto): Promise<Readonly<Product>> {
-    const {
-      stockKeepingUnit: { globalTradeItemNumber },
-    } = dummyProduct;
+    const dummyProduct = dummyProducts[payload.globalTradeItemNumber];
 
-    if (payload.globalTradeItemNumber !== globalTradeItemNumber) {
+    if (!dummyProduct) {
       ErrorHelper.NotFound('serialized global trade number not found');
     }
 
