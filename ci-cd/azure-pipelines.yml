@@ -86,7 +86,7 @@ stages:
             SCServiceConnection: 'SonarcloudServer'
             
             scanSnyk: true
-            SKFailOnIssues: true
+            SKFailOnIssues: false
             SkServiceConnection: 'SnykServer'
             SkOrganization: '8f25c312-7878-443b-8dd9-186ba722246e'
             SkAdditionalArgs: '--all-projects --detection-depth=6'       
