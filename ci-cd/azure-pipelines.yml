@@ -10,7 +10,7 @@ resources:
   - repository: appsectemplates
     type: git
     name: DevSecOps/DevSecOps
-    endpoint: CrossOrg-Devsecops
+    #endpoint: CrossOrg-Devsecops
 
 parameters:
     - name: app
