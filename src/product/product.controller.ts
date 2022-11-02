@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { HttpResponse, Product } from 'src/interface';
+import { APIResponse } from 'src/common';
 import { FindProductDto } from './dto/find-product.dto';
 import { FindProductDtoV2 } from './dto/find-productv2.dto';
 import { ProductService } from './product.service';
@@ -11,26 +11,18 @@ export class ProductController {
   @Post('find')
   async findProduct(
     @Body() payload: FindProductDto,
-  ): Promise<Readonly<HttpResponse<Product>>> {
+  ): Promise<Readonly<APIResponse>> {
     const data = await this.productService.findProduct(payload);
 
-    return {
-      data,
-      success: true,
-      message: 'Product fetched successfully',
-    };
+    return new APIResponse(data, true, 'Product fetched successfully');
   }
 
   @Post('find/v2')
   async findProductV2(
     @Body() payload: FindProductDtoV2,
-  ): Promise<Readonly<HttpResponse<Product>>> {
+  ): Promise<Readonly<APIResponse>> {
     const data = await this.productService.findProductV2(payload);
 
-    return {
-      data,
-      success: true,
-      message: 'Product fetched successfully',
-    };
+    return new APIResponse(data, true, 'Product validated successfully');
   }
 }
