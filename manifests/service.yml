@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: uwazi-orchestrator
+spec:
+    ports:
+    - port: 80 
+    selector:
+        app: uwazi-orchestrator
