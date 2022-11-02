@@ -33,6 +33,7 @@ parameters:
       type: object
       default: |
          --build-arg PORT=$(PORT)
+         --build-arg ARG_FINGERPRINT_SERVICE_URL=$(FINGERPRINT_SERVICE_URL)
 
 variables:
 - name: 'vmImageName'
