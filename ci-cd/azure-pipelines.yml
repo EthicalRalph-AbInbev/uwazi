@@ -91,7 +91,7 @@ stages:
             SkOrganization: '8f25c312-7878-443b-8dd9-186ba722246e'
             SkAdditionalArgs: '--all-projects --detection-depth=6'       
             scanGitleaks: true
-            scanSnykContainer: true
+            scanSnykContainer: false
             SkDockerImageName: '$(ACR)/${{parameters.imageRepository}}:$(Build.BuildNumber)'
             SkDockerFilePath: './$(Build.Repository.Name)/Dockerfile'
 
