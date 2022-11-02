@@ -24,4 +24,11 @@ export class FindProductDtoV2 {
     description: 'Product base64 image',
   })
   image: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    description: 'Signature',
+  })
+  signature: string;
 }
