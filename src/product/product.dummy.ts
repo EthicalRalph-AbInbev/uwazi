@@ -3,8 +3,8 @@ import { Product } from 'src/interface';
 export const dummyProducts: {
   [key: string]: Product;
 } = {
-  '01234567891234': {
-    serializedGlobalTradeItemNumber: '(01)02024220714002(21)056339576999',
+  '5010162000164': {
+    serializedGlobalTradeItemNumber: 'S9MH4MSRYQ4S5010162000164',
     signature: 'Ci3JHf...qh0Nxrsn3EK==',
     producer: '182ee7b8f685138616949',
     producerName: 'Inbev Belgium',
@@ -33,7 +33,7 @@ export const dummyProducts: {
           quantityUnitOfMeasure: 'cl',
         },
       ],
-      globalTradeItemNumber: '01234567891234',
+      globalTradeItemNumber: '5010162000164',
       productName: 'string',
       industry: 'Beer',
       alcoholContent: 4.5,

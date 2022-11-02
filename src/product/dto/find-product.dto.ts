@@ -6,7 +6,7 @@ export class FindProductDto {
   @IsNotEmpty()
   @ApiProperty({
     description: 'Global trade item number of the item',
-    example: '01234567891234',
+    example: '5010162000164',
   })
   globalTradeItemNumber: string;
 
@@ -14,7 +14,7 @@ export class FindProductDto {
   @IsNotEmpty()
   @ApiProperty({
     description: 'Item serial number',
-    example: '12345',
+    example: 'S9MH4MSRYQ4S',
   })
   serialNumber: string;
 
