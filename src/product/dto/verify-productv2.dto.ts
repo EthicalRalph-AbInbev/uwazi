@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumberString, IsString } from 'class-validator';
 
-export class FindProductDtoV2 {
+export class VerifyProductDto {
   @IsNumberString()
   @IsNotEmpty()
   @ApiProperty({
