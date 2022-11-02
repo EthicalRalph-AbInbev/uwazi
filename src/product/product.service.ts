@@ -10,9 +10,9 @@ export class ProductService {
   async findProduct(payload: FindProductDto): Promise<Readonly<Product>> {
     const dummyProduct = dummyProducts[payload.globalTradeItemNumber];
 
-    // if (!dummyProduct) {
-    //   ErrorHelper.NotFound('serialized global trade number not found');
-    // }
+    if (!dummyProduct) {
+      ErrorHelper.NotFound('serialized global trade number not found');
+    }
 
     return dummyProduct;
   }
