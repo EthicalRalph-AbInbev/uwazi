@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumberString, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class FindProductDto {
-  @IsNumberString()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Global trade item number of the item',
@@ -10,7 +10,7 @@ export class FindProductDto {
   })
   globalTradeItemNumber: string;
 
-  @IsNumberString()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Item serial number',
