@@ -134,7 +134,7 @@ stages:
         inputs:
             command: push
             repository: ${{parameters.imageRepository}}
-            containerRegistry: ${{parameters.devDockerRegistryServiceConnection}}
+            containerRegistry: ${{parameters.DockerRegistryServiceConnection}}
             tags: |
               $(Build.BuildNumber)
               latest
