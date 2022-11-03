@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { APIResponse } from 'src/common';
 import { FindProductDto, VerifyProductDto } from './dto';
 import { ProductService } from './product.service';
@@ -8,6 +8,7 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post('find')
+  @HttpCode(200)
   async findProduct(
     @Body() payload: FindProductDto,
   ): Promise<Readonly<APIResponse>> {
@@ -17,6 +18,7 @@ export class ProductController {
   }
 
   @Post('verify')
+  @HttpCode(200)
   async verifyProduct(
     @Body() payload: VerifyProductDto,
   ): Promise<Readonly<APIResponse>> {
