@@ -1,5 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import * as express from 'express';
+
 import { INestApplication, Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -12,6 +14,9 @@ const bootstrap = async () => {
   const app = await NestFactory.create<INestApplication>(AppModule);
 
   app.setGlobalPrefix('/api');
+
+  app.use(express.json({ limit: '50mb' }));
+  app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
   const config = new DocumentBuilder()
     .setTitle('UWAZI Orchestrator API')
