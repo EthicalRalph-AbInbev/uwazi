@@ -10,7 +10,7 @@ resources:
   - repository: appsectemplates
     type: git
     name: DevSecOps/DevSecOps
-    endpoint: CrossOrg-Devsecops
+    #endpoint: CrossOrg-Devsecops
 
 parameters:
     - name: app
@@ -33,6 +33,7 @@ parameters:
       type: object
       default: |
          --build-arg PORT=$(PORT)
+         --build-arg ARG_FINGERPRINT_SERVICE_URL=$(FINGERPRINT_SERVICE_URL)
 
 variables:
 - name: 'vmImageName'
@@ -86,12 +87,12 @@ stages:
             SCServiceConnection: 'SonarcloudServer'
             
             scanSnyk: true
-            SKFailOnIssues: true
+            SKFailOnIssues: false
             SkServiceConnection: 'SnykServer'
             SkOrganization: '8f25c312-7878-443b-8dd9-186ba722246e'
             SkAdditionalArgs: '--all-projects --detection-depth=6'       
             scanGitleaks: true
-            scanSnykContainer: true
+            scanSnykContainer: false
             SkDockerImageName: '$(ACR)/${{parameters.imageRepository}}:$(Build.BuildNumber)'
             SkDockerFilePath: './$(Build.Repository.Name)/Dockerfile'
 
@@ -115,7 +116,7 @@ stages:
     - job: Build
       displayName: Build and Push
 
-    - steps:
+      steps:
       - task: Docker@2
         displayName: Build
         inputs:
@@ -134,7 +135,7 @@ stages:
         inputs:
             command: push
             repository: ${{parameters.imageRepository}}
-            containerRegistry: ${{parameters.devDockerRegistryServiceConnection}}
+            containerRegistry: ${{parameters.DockerRegistryServiceConnection}}
             tags: |
               $(Build.BuildNumber)
               latest
