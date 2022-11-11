@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ProductModule } from './product/product.module';
-import { FingerprintValidatorModule } from './fingerprint-service/fingerprint-service.module';
+import { FingerprintModule } from './fingerprint-service/fingerprint-service.module';
 import { envVarsSchema } from './utils/env.validator';
 
 @Module({
@@ -12,7 +12,7 @@ import { envVarsSchema } from './utils/env.validator';
       validationSchema: envVarsSchema,
     }),
     ProductModule,
-    FingerprintValidatorModule,
+    FingerprintModule,
   ],
   controllers: [],
   providers: [],

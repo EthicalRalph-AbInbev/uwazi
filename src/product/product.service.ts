@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FingerprintValidatorService } from 'src/fingerprint-service/fingerprint-service.service';
+import { FingerprintService } from 'src/fingerprint-service/fingerprint-service.service';
 import { Product } from 'src/interface';
 import { ErrorHelper } from 'src/utils/error.utils';
 import { FindProductDto, VerifyProductDto } from './dto';
@@ -7,7 +7,7 @@ import { dummyProducts } from './product.dummy';
 
 @Injectable()
 export class ProductService {
-  constructor(private fingerprintService: FingerprintValidatorService) {}
+  constructor(private fingerprintService: FingerprintService) {}
 
   async findProduct(payload: FindProductDto): Promise<Readonly<Product>> {
     const dummyProduct = dummyProducts[payload.globalTradeItemNumber];

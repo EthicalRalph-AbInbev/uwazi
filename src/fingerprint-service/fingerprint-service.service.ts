@@ -6,8 +6,8 @@ import { ErrorHelper } from 'src/utils/error.utils';
 import { VerifyFingerprintResponse, GetFingerprintResponse } from './support';
 
 @Injectable()
-export class FingerprintValidatorService {
-  private logger = new Logger(FingerprintValidatorService.name);
+export class FingerprintService {
+  private logger = new Logger(FingerprintService.name);
 
   private readonly fingerPrintValidateEndpoint: string =
     'inexto/api/fingerprint/Beverage/Dotcode/Check';

@@ -1,7 +1,7 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { FingerprintValidatorService } from './fingerprint-service.service';
+import { FingerprintService } from './fingerprint-service.service';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { FingerprintValidatorService } from './fingerprint-service.service';
       }),
     }),
   ],
-  exports: [FingerprintValidatorService],
-  providers: [FingerprintValidatorService],
+  exports: [FingerprintService],
+  providers: [FingerprintService],
 })
-export class FingerprintValidatorModule {}
+export class FingerprintModule {}
