@@ -1,7 +1,7 @@
 export interface Product {
   serializedGlobalTradeItemNumber: string;
   signature: string;
-  producer: string;
+  producerID: string;
   producerName: string;
   destinationCountry: string;
   productionDate: string;
@@ -15,7 +15,7 @@ export interface Product {
       country: string;
     };
     factoryCoordinates: string;
-    productionLine: Array<string>;
+    productionLineID: string;
   };
   stockKeepingUnit: {
     stockKeepingUnit: string;
@@ -37,8 +37,12 @@ export interface Product {
     infoText3: string;
     infoText4: string;
   };
-  serviceProvider: string;
+  serviceProviderID: string;
   serviceProviderName: string;
-  serviceProviderBatchId: string;
+  serviceProviderBatchID: string;
   bestBeforeDate: string;
+  serviceProviderInfo: {
+    signatureVerificationEndpoint: string;
+  };
+  scanResults: Array<any>;
 }
