@@ -40,7 +40,7 @@ export class ProductService {
     }
 
     return {
-      serializedGlobalTradeItemNumber: `(01)${payload.serialNumber}(10)${payload.globalTradeItemNumber}`,
+      serializedGlobalTradeItemNumber: `(01)${payload.serialNumber}(21)${payload.globalTradeItemNumber}`,
       scanDateTime: new Date(),
       coordinates: '67.7121 -134.9233',
       status: `digital signature verified ${!isValid && 'NOT'} authentic`,
