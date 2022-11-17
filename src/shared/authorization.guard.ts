@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private readonly config: ConfigService) {}
+
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const authorizationHeader = request.headers['authorization'];
@@ -17,6 +18,7 @@ export class AuthGuard implements CanActivate {
     if (authorizationHeader !== authKey) {
       ErrorHelper.Unauthorized('Invalid Authorization Token');
     }
+
     return true;
   }
 }
