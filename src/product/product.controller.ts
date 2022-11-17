@@ -1,9 +1,11 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
 import { APIResponse } from 'src/common';
 import { FindProductDto, VerifyProductDto } from './dto';
 import { ProductService } from './product.service';
+import { AuthGuard } from '../shared/authorization.guard';
 
 @Controller('product')
+@UseGuards(AuthGuard)
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
