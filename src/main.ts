@@ -21,6 +21,7 @@ const bootstrap = async () => {
   const config = new DocumentBuilder()
     .setTitle('UWAZI Orchestrator API')
     .setDescription('The UWAZI Orchestrator API description')
+    .addBearerAuth()
     .setVersion('0.1')
     .build();
 

@@ -1,10 +1,12 @@
 import { Body, Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { APIResponse } from 'src/common';
 import { FindProductDto, VerifyProductDto } from './dto';
 import { ProductService } from './product.service';
 import { AuthGuard } from '../shared/authorization.guard';
 
 @Controller('product')
+@ApiBearerAuth()
 @UseGuards(AuthGuard)
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
