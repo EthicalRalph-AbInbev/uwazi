@@ -1,34 +1,21 @@
-import {
-  CanActivate,
-  ExecutionContext,
-  Inject,
-  Injectable,
-  HttpException,
-  HttpStatus,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { ErrorHelper } from 'src/utils/error.utils';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  @Inject(ConfigService)
-  public config: ConfigService;
+  constructor(private readonly config: ConfigService) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const authorizationHeader = request.headers['authorization'];
     const authKey = this.config.get('AUTH_KEY');
 
     if (!authorizationHeader) {
-      throw new HttpException(
-        'Authorization header is required',
-        HttpStatus.UNAUTHORIZED,
-      );
+      ErrorHelper.Unauthorized('Authorization header is required');
     }
 
     if (authorizationHeader !== authKey) {
-      throw new HttpException(
-        'Invalid Authorization Token',
-        HttpStatus.UNAUTHORIZED,
-      );
+      ErrorHelper.Unauthorized('Invalid Authorization Token');
     }
     return true;
   }
