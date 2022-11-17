@@ -33,7 +33,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const message = getMessage(exceptionResponse);
 
     response.status(status).json({
-      status: false,
+      success: false,
       statusCode: status,
       message,
       error: exceptionResponse.error,
